@@ -63,6 +63,39 @@ app.get('/blogs/:id', (req, res) => {
     })
 })
 
+// Edit post
+app.get('/blogs/:id/edit', (req, res) => {
+    Blog.findById(req.params.id, (error, blogPost) => {
+        if(error) {
+            // Fix blog not found
+            res.redirect('/blogs');
+        } else {
+            res.render('edit', {blog: blogPost});
+        }
+    })
+})
+
+// Update post
+app.put('/blogs/:id', (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);  // Sanitize to remove scripts from body :)
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (error, blogPost) => {
+        if (error) {
+            res.redirect('/blogs/'+req.params.id);  // TODO: kontrollera!
+            console.log('ERROR: ' + error);
+        } else {
+            res.redirect('/blogs/'+req.params.id);
+        }
+    })
+})
+
+
+
+
+// 404 / not found
+app.get('*', (req, res) => {
+    res.render('notFound');
+})
+
 
 app.listen(3000, () => {
     console.log('Blog is up!');
