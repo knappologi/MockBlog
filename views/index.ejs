@@ -1,9 +1,33 @@
 <% include ./partials/header %>
-    <h1> hello baby vids </h1>
 
-            <% blogs.forEach((blog) => { %>
-                    <%= blog.title %>
+<div class="ui main text container header-class">
+        <div class="ui segments header-class">
+                <div class="ui huge header"> A blog </div>
+        </div>
+</div>
 
-            <% })%>
+<div class="ui main text container">
+        <div class="ui top attached segment">
+                <div class="ui divided items">
+
+                        <% blogs.forEach((blog) => { %>
+                                <div class="item">
+                                        <div class="image">
+                                                <img src="<%= blog.image%>">
+                                        </div>
+                                        <div class="content">
+                                                <a class="header" href="/blogs/<%= blog.id%>"><%= blog.title %></a>
+                                                <div class="meta"> <span><%= blog.createDate.toDateString() %></span></div>
+                                                <div class="description"><%- blog.body.substring(0, 99) %>...</div>
+                                                <div class="extra"> 
+                                                        <a class="ui secondary basic button" href="/blogs/<%= blog.id%>">Read more <i class="right chevron icon"></i></a>
+                                                </div>
+                                        </div>
+                                </div>
+
+                        <% })%>
+                </div>
+        </div>
+</div>
 
 <% include ./partials/footer %>
