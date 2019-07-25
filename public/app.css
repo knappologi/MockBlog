@@ -2,6 +2,8 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+
+
 .ui.secondary.pointing.menu {
     border-bottom: none;
     margin-bottom: 4%;
@@ -38,4 +40,23 @@ body {
 
 .ui.inverted.card>.content>.header, .ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description, .ui.inverted.cards>.card>.content>.header {
     color: black;
+}
+
+
+/* 
+A / links / hover
+*/
+
+
+a:hover {
+    color: #d29810;
+
+}
+
+.ui.card>.content>a.header:hover, .ui.cards>.card>.content>a.header:hover {
+    color: #d29810;
+}
+
+.ui.inverted.card>.extra a:not(.ui):hover, .ui.inverted.cards>.card>.extra a:not(.ui):hover {
+    color: #f0dd87;
 }
