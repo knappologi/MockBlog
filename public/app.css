@@ -20,3 +20,22 @@ body {
 
 
 }
+
+
+.ui.card, .ui.cards>.card {
+    width: inherit;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 0%;
+}
+
+.ui.main.text.container.index-view {
+    padding: 5%;
+}
+
+.ui.card>.content.index-view-content{
+ background: white;
+}
+
+.ui.inverted.card>.content>.header, .ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description, .ui.inverted.cards>.card>.content>.header {
+    color: black;
+}
