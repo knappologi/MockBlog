@@ -9,18 +9,15 @@ body {
     margin-bottom: 4%;
 }
 
+/* INDEX */
 .ui.segments.header-class {
     border: none;
     box-shadow: none;
     -webkit-box-shadow: none;
     text-align: center;
     letter-spacing: 3px;
-    padding: 2%;
-    margin-bottom: 5%; 
     font-family: 'Roboto Mono', monospace;
-
-
-
+    padding-top: 5%;
 }
 
 
@@ -28,18 +25,28 @@ body {
     width: inherit;
     font-family: 'Roboto Mono', monospace;
     border-radius: 0%;
+    margin-bottom: 15%;
 }
 
 .ui.main.text.container.index-view {
-    padding: 5%;
+    padding: 2% 5% 5% 5;
 }
 
 .ui.card>.content.index-view-content{
  background: white;
 }
 
-.ui.inverted.card>.content>.header, .ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description, .ui.inverted.cards>.card>.content>.header {
+.ui.inverted.card>.content>.header, .ui.inverted.card>.content>.description, .ui.inverted.cards>.card>.content>.header {
     color: black;
+}
+
+.ui.inverted.card>.content>.meta {
+    color:#888383;
+}
+
+.ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description {
+    font-size: 0.8em;
+
 }
 
 
@@ -59,4 +66,39 @@ a:hover {
 
 .ui.inverted.card>.extra a:not(.ui):hover, .ui.inverted.cards>.card>.extra a:not(.ui):hover {
     color: #f0dd87;
+}
+
+
+/* NEW */
+.ui.main.text.container.segment.new-post {
+    font-family: 'Roboto Mono', monospace;
+    margin-top: 8%;
+    border: 1px solid black;
+    box-shadow: none;
+}
+
+.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url], .ui.form textarea, .ui.input textarea{
+    font-family: 'Roboto Mono', monospace;
+    border: 1px solid black;
+}
+
+.ui.form .field {
+    margin: 0 0 3em;
+}
+
+/*  MOBILE VIEW */
+@media screen and (max-width: 800px) {
+    /* INDEX */
+    .ui.segments.header-class {
+        padding-top: 15%;
+    }
+
+    .ui.secondary.pointing.menu.fixed {
+        background: white;
+    }
+
+    /* NEW */
+    .ui.main.text.container.segment.new-post {
+        margin-top: 15%;
+    }
 }
