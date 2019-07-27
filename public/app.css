@@ -2,14 +2,30 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-
-
 .ui.secondary.pointing.menu {
     border-bottom: none;
     margin-bottom: 4%;
 }
 
+/* ALL */
+@media only screen and (min-width: 1200px) {
+    .ui.container { 
+        width: 55%;
+    }
+}
+
+.ui.text.container {
+    max-width: none !important;
+}
+
 /* INDEX */
+
+.ui.huge.header {
+    margin: 5%;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+}
 .ui.segments.header-class {
     border: none;
     box-shadow: none;
@@ -28,6 +44,11 @@ body {
     margin-bottom: 15%;
 }
 
+@media only screen and (min-width: 1200px) {
+    .ui.main.text.container.index-view {
+        width: 35%;
+    }
+}
 .ui.main.text.container.index-view {
     padding: 2% 5% 5% 5;
 }
@@ -46,7 +67,15 @@ body {
 
 .ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description {
     font-size: 0.8em;
+}
 
+.ui.inverted.card>.extra, .ui.inverted.cards>.card>.extra {
+    border-top: none;
+    font-size: 0.9em;
+}
+
+.ui.inverted.card>.extra a:not(.ui), .ui.inverted.cards>.card>.extra a:not(.ui) {
+    color: rgba(255, 255, 255, 0.83);
 }
 
 
@@ -75,6 +104,7 @@ a:hover {
     margin-top: 8%;
     border: 1px solid black;
     box-shadow: none;
+    padding: 0% 5% 2%;
 }
 
 .ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url], .ui.form textarea, .ui.input textarea{
@@ -82,9 +112,45 @@ a:hover {
     border: 1px solid black;
 }
 
+.ui.form input:not([type]):focus, .ui.form input[type=date]:focus, .ui.form input[type=datetime-local]:focus, .ui.form input[type=email]:focus, .ui.form input[type=file]:focus, .ui.form input[type=number]:focus, .ui.form input[type=password]:focus, .ui.form input[type=search]:focus, .ui.form input[type=tel]:focus, .ui.form input[type=text]:focus, .ui.form input[type=time]:focus, .ui.form input[type=url]:focus, .ui.form textarea:focus {
+    border-color: #d29810;
+}
+
+
+
 .ui.form .field {
     margin: 0 0 3em;
 }
+
+.ui.basic.secondary.button, .ui.basic.secondary.buttons {
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 3px;
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 8em;
+}
+
+
+.ui.basic.secondary.button:hover, .ui.basic.secondary.buttons {
+    background: #f0dd87;
+}
+
+/* SHOW */
+ui.grid.container.centered.show-post {
+    border: 1px solid black;
+}
+
+.ui.grid>.row>.column>img, .ui.grid>.row>img {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+@media only screen and (min-width: 1200px) {
+.ui.grid.container {
+    width: 55% !important;
+}
+}
+
 
 /*  MOBILE VIEW */
 @media screen and (max-width: 800px) {

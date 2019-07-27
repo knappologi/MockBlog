@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 
     <div class="ui main text container segment new-post">
-        <div class="ui huge header"> New blog post
+        <div class="ui huge header"> New post
         </div>
         <form action="/blogs" method="POST" class="ui form">
             <div class="field">
@@ -18,8 +18,7 @@
                 <label>Blog content</label>
                 <Textarea name="blog[body]" required></Textarea>
             </div>
-
-            <input class="ui secondary basic button" type="submit">
+            <button type="submit" class="ui secondary basic button post-button">Post</button>
         </form>
     </div>
 

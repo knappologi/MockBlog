@@ -1,4 +1,50 @@
 <% include ./partials/header %>
 
-<h1>WOW SO PRETTY</h1>
+<div class="ui main text container segment">
+    <div class="ui huge header"> <%= blog.title %> </div>
+
+    <div class="ui top attached">
+    <div class="item">
+        <img class="ui centered bordered image" src="<%= blog.image%>">
+            <div class="content">
+            <span><%= blog.createDate.toDateString() %></span>
+                <div class="description">
+                <p><%- blog.body %></p>
+                </div>
+                <a href="/blogs/<%=blog.id%>/edit" class="ui secondary basic button">Edit</a>
+                <form action="/blogs/<%=blog.id%>?_method=DELETE"  method="POST" id="deleteForm">
+                <button class="ui secondary basic button">Delete</button>
+                </form>
+            </div>
+    </div>
+    </div>
+
+</div>
+
+
+<!-- NEW BELOW -->
+
+<div class="ui grid container centered show-post">
+  <div class="eight wide centered row" style="background:pink;">
+    <div class="ui huge header"> <%= blog.title %> </div>
+  </div>
+  <div class="eight wide centered row">
+    <img class="ui centered bordered image" src="<%= blog.image%>">
+  </div>
+  <div class="four wide centered row" style="background:yellow;">
+    <span><%= blog.createDate.toDateString() %></span>
+  </div>
+  <div class="four wide column" style="background:aliceblue;"></div>
+
+    <div class="sixteen wide column" style="background:purple;"></div>
+
+  <div class="four wide column" style="background:aliceblue;"></div>
+  <div class="four wide column" style="background:yellow;"></div>
+  <div class="four wide column" style="background:pink;"></div>
+  <div class="four wide column" style="background:blue;"></div>
+</div>
+
+
+
+
 <% include ./partials/footer %>
