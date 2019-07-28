@@ -2,10 +2,11 @@
 
 <div class="ui main text container header-class">
         <div class="ui segments header-class">
-                <div class="ui huge header"> A blog </div>
+                <div class="ui huge header"> A mock blog </div>
         </div>
 </div>
-
+<!-- ORG -->
+<!-- 
 <div class="ui main text container">
         <div class="ui top attached segment">
                 <div class="ui divided items">
@@ -28,6 +29,42 @@
                         <% })%>
                 </div>
         </div>
+
 </div>
+-->
+<!-- ORG END -->
+
+
+
+
+<div class="ui main text container index-view">
+        <div class="ui top attached">
+                <div class="ui divided items">
+
+                        <% blogs.forEach((blog) => { %>
+                                <div class="ui card inverted">
+                                        <div class="image">
+                                        <img src="<%= blog.image%>">
+                                        </div>
+                                        <div class="content index-view-content">
+                                                <a class="header" href="/blogs/<%= blog.id%>"><%= blog.title %></a>
+                                                <div class="meta">
+                                                        <span><%= blog.createDate.toDateString() %></span>
+                                                </div>
+                                                        <div class="description">
+                                                                <%- blog.body.substring(0, 150) %>...
+                                                        </div>
+                                        </div>
+                                        <div class="extra content">
+                                                <a class="inverted" href="/blogs/<%= blog.id%>">Read <i class="right chevron icon"></i></a>               
+                                        </div>
+                                </div>
+
+                        <% })%>
+                </div>
+        </div>
+
+</div>
+
 
 <% include ./partials/footer %>

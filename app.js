@@ -5,11 +5,13 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_CONNECTIONSTRING, { useNewUrlParser: true, useFindAndModify: false });
+const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended:true})); 
+app.use(methodOverride('_method'));
 
 const Blog = mongoose.model('Blog', {
     title: String,
@@ -46,7 +48,7 @@ app.post('/blogs', (req, res) => {
         if(error) {
             console.log('ERROR. Could not create post: ' + error);
         } else {
-            res.redirect('/blogs/');
+            res.redirect('/blogs/'+newBlog.id);
         }
     })
 })
@@ -88,6 +90,17 @@ app.put('/blogs/:id', (req, res) => {
     })
 })
 
+// Delete post
+app.delete('/blogs/:id', (req, res) => {
+    Blog.findByIdAndRemove(req.params.id, (error, blog) => {
+        if (error) {
+            res.redirect('/blogs/'+req.params.id);  // TODO: kontrollera!
+            console.log('ERROR: ' + error);
+        } else {
+            res.redirect('/');
+        }
+    })
+})
 
 
 

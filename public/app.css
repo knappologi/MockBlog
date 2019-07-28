@@ -1,5 +1,10 @@
-body {
+body , html{
     font-family: 'Roboto Mono', monospace;
+    height: inherit;
+}
+
+form {
+    display: inline;
 }
 
 .ui.secondary.pointing.menu {
@@ -7,16 +12,203 @@ body {
     margin-bottom: 4%;
 }
 
+/* ALL */
+@media only screen and (min-width: 1200px) {
+    .ui.container { 
+        width: 55%;
+    }
+}
+
+.ui.text.container {
+    max-width: none !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-track
+{
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar
+{
+    width: 0.8em;
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 1px solid white; 
+}
+
+@-moz-document url-prefix() {
+    html {
+    scrollbar-color: #535353 #FFF;
+    }
+}
+
+/* INDEX */
+
+.ui.huge.header {
+    margin: 5%;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+}
 .ui.segments.header-class {
     border: none;
     box-shadow: none;
     -webkit-box-shadow: none;
     text-align: center;
     letter-spacing: 3px;
-    padding: 2%;
-    margin-bottom: 5%; 
     font-family: 'Roboto Mono', monospace;
+    padding-top: 5%;
+}
+
+
+.ui.card, .ui.cards>.card {
+    width: inherit;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 0%;
+    margin-bottom: 15%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .ui.main.text.container.index-view {
+        width: 35%;
+    }
+}
+
+.ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
+    border: 1px solid black;
+}
+
+.ui.main.text.container.index-view {
+    padding: 2% 5% 5% 5;
+}
+
+.ui.card>.content.index-view-content{
+ background: white;
+}
+
+.ui.inverted.card>.content>.header, .ui.inverted.card>.content>.description, .ui.inverted.cards>.card>.content>.header {
+    color: black;
+}
+
+.ui.inverted.card>.content>.meta {
+    color:#888383;
+}
+
+.ui.inverted.card>.content>.meta, .ui.inverted.card>.content>.description {
+    font-size: 0.8em;
+}
+
+.ui.inverted.card>.extra, .ui.inverted.cards>.card>.extra {
+    border-top: none;
+    font-size: 0.9em;
+}
+
+.ui.inverted.card>.extra a:not(.ui), .ui.inverted.cards>.card>.extra a:not(.ui) {
+    color: rgba(255, 255, 255, 0.83);
+}
+
+
+/* 
+A / links / hover
+*/
+
+
+a:hover {
+    color: #d29810;
+
+}
+
+.ui.card>.content>a.header:hover, .ui.cards>.card>.content>a.header:hover {
+    color: #d29810;
+}
+
+.ui.inverted.card>.extra a:not(.ui):hover, .ui.inverted.cards>.card>.extra a:not(.ui):hover {
+    color: #f0dd87;
+}
+
+
+/* NEW */
+.ui.main.text.container.segment.new-post, .ui.main.text.container.segment.edit-post {
+    font-family: 'Roboto Mono', monospace;
+    margin-top: 8%;
+    border: 1px solid black;
+    box-shadow: none;
+    padding: 0% 5% 2%;
+}
+
+.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url], .ui.form textarea, .ui.input textarea{
+    font-family: 'Roboto Mono', monospace;
+    border: 1px solid black;
+}
+
+.ui.form input:not([type]):focus, .ui.form input[type=date]:focus, .ui.form input[type=datetime-local]:focus, .ui.form input[type=email]:focus, .ui.form input[type=file]:focus, .ui.form input[type=number]:focus, .ui.form input[type=password]:focus, .ui.form input[type=search]:focus, .ui.form input[type=tel]:focus, .ui.form input[type=text]:focus, .ui.form input[type=time]:focus, .ui.form input[type=url]:focus, .ui.form textarea:focus {
+    border-color: #d29810;
+}
 
 
 
+.ui.form .field {
+    margin: 0 0 3em;
+}
+
+.ui.basic.secondary.button, .ui.basic.secondary.buttons {
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 3px;
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 8em;
+}
+
+
+.ui.basic.secondary.button:hover, .ui.basic.secondary.buttons {
+    background: #f0dd87;
+}
+
+/* SHOW */
+.ui.huge.header.show-post {
+    border-bottom: 4px solid black;
+}
+
+.ui.grid>.row>.column>img, .ui.grid>.row>img {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+.edit-delete-post {
+    position: fixed;
+    bottom: 0;
+    background: white;
+    width: inherit;
+    padding: 5px 0 13px 0;
+}
+
+@media only screen and (min-width: 1200px) {
+.ui.grid.container {
+    width: 55% !important;
+}
+}
+
+
+/*  MOBILE VIEW */
+@media screen and (max-width: 800px) {
+    /* INDEX */
+    .ui.segments.header-class {
+        padding-top: 15%;
+    }
+
+    .ui.secondary.pointing.menu.fixed {
+        background: white;
+    }
+
+    /* NEW + EDIT*/
+    .ui.main.text.container.segment.new-post, .ui.main.text.container.segment.edit-post {
+        margin-top: 15%;
+    }
+
+    /* SHOW */
 }
