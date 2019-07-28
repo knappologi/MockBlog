@@ -24,6 +24,7 @@
   <div class="sixteen wide centered row">
             <div class="edit-delete-post">
                 <form action="/blogs/<%=blog.id%>?_method=DELETE"  method="POST" id="deleteForm">
+                    <button class="ui tiny secondary basic button" onclick="location.href='/'">Back</button>
                     <button class="ui tiny secondary basic button">Delete</button> 
                     <a href="/blogs/<%=blog.id%>/edit" class="ui tiny secondary basic button">Edit</a>
                 </form>
