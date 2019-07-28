@@ -3,6 +3,10 @@ body , html{
     height: inherit;
 }
 
+form {
+    display: inline;
+}
+
 .ui.secondary.pointing.menu {
     border-bottom: none;
     margin-bottom: 4%;
@@ -129,7 +133,7 @@ a:hover {
 
 
 /* NEW */
-.ui.main.text.container.segment.new-post {
+.ui.main.text.container.segment.new-post, .ui.main.text.container.segment.edit-post {
     font-family: 'Roboto Mono', monospace;
     margin-top: 8%;
     border: 1px solid black;
@@ -201,8 +205,8 @@ a:hover {
         background: white;
     }
 
-    /* NEW */
-    .ui.main.text.container.segment.new-post {
+    /* NEW + EDIT*/
+    .ui.main.text.container.segment.new-post, .ui.main.text.container.segment.edit-post {
         margin-top: 15%;
     }
 
