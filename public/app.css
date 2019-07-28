@@ -1,5 +1,6 @@
-body {
+body , html{
     font-family: 'Roboto Mono', monospace;
+    height: inherit;
 }
 
 .ui.secondary.pointing.menu {
@@ -16,6 +17,30 @@ body {
 
 .ui.text.container {
     max-width: none !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-track
+{
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar
+{
+    width: 0.8em;
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 1px solid white; 
+}
+
+@-moz-document url-prefix() {
+    html {
+    scrollbar-color: #535353 #FFF;
+    }
 }
 
 /* INDEX */
@@ -49,6 +74,11 @@ body {
         width: 35%;
     }
 }
+
+.ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
+    border: 1px solid black;
+}
+
 .ui.main.text.container.index-view {
     padding: 2% 5% 5% 5;
 }
@@ -136,13 +166,21 @@ a:hover {
 }
 
 /* SHOW */
-ui.grid.container.centered.show-post {
-    border: 1px solid black;
+.ui.huge.header.show-post {
+    border-bottom: 4px solid black;
 }
 
 .ui.grid>.row>.column>img, .ui.grid>.row>img {
     border: 1px solid black;
     padding: 1%;
+}
+
+.edit-delete-post {
+    position: fixed;
+    bottom: 0;
+    background: white;
+    width: inherit;
+    padding: 5px 0 13px 0;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -167,4 +205,6 @@ ui.grid.container.centered.show-post {
     .ui.main.text.container.segment.new-post {
         margin-top: 15%;
     }
+
+    /* SHOW */
 }
