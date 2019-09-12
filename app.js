@@ -13,13 +13,10 @@ app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended:true})); 
 app.use(methodOverride('_method'));
 
-const Blog = mongoose.model('Blog', {
-    title: String,
-    image: String,
-    body: String,
-    createDate: {   type: Date,
-                    default: Date.now }
-});
+const Blog = require('./associations/models/blog');
+const Post = require('./associations/models/post');
+const Comment = require('./associations/models/comment');
+const User = require('./associations/models/user');
 
 app.get('/', (req, res) => {
     res.redirect('/blogs');
