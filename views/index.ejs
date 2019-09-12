@@ -52,7 +52,10 @@
                                                         <span><%= blog.createDate.toDateString() %></span>
                                                 </div>
                                                         <div class="description">
-                                                                <%- blog.body.substring(0, 150) %>...
+                                                                <%- blog.body.substring(0, 150) %>
+                                                                <% if (blog.body.length > 150) { %>
+                                                                        ...
+                                                               <% } %>
                                                         </div>
                                         </div>
                                         <div class="extra content">
