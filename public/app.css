@@ -7,6 +7,11 @@ form {
     display: inline;
 }
 
+a {
+    color: #000000;
+    text-decoration: underline;
+}
+
 .ui.secondary.pointing.menu {
     border-bottom: none;
     margin-bottom: 4%;
@@ -192,6 +197,14 @@ a:hover {
     width: 55% !important;
 }
 }
+
+/* NOT FOUND */
+h2.not-found {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    padding-top: 2em;
+}
+
 
 
 /*  MOBILE VIEW */
