@@ -18,15 +18,26 @@ const Post = require('./associations/models/post');
 const Comment = require('./associations/models/comment');
 const User = require('./associations/models/user');
 
+const   indexRoutes     = require('./routes/index');  
+        postsRoutes    = require('./routes/posts');
+        // commentsRoutes  = require('./routes/comments');
+        
+
 // Info to all views
 app.use((req, res, next) => {
     res.locals.currentView = (req.url.includes('new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
     next();
 });
 
+app.use(indexRoutes);
+// app.use(commentsRoutes);    // can also be shortened: /place/:id/comments
+app.use(postsRoutes);
+
+/*
 app.get('/', (req, res) => {
     res.redirect('/posts');
 })
+
 
 app.get('/posts', (req, res) => {
     Post.find({}, (error, posts) => {
@@ -37,6 +48,7 @@ app.get('/posts', (req, res) => {
         }
     })
 })
+
 
 // Form for new post
 app.get('/posts/new', (req, res) => {
@@ -67,6 +79,8 @@ app.get('/posts/:id', (req, res) => {
         }
     })
 })
+
+
 
 // Edit post
 app.get('/posts/:id/edit', (req, res) => {
@@ -105,12 +119,24 @@ app.delete('/posts/:id', (req, res) => {
     })
 })
 
+*/
 
 
-// 404 / not found
-app.get('*', (req, res) => {
-    res.render('notFound');
-})
+app.use((req, res) =>{
+    res.status(404);
+  
+    // html response
+    if (req.accepts('html')) {
+        res.render('notFound');
+      return;
+    }
+  
+    // json response
+    if (req.accepts('json')) {
+      res.send({ error: 'Page not found' });
+      return;
+    }
+  });
 
 
 app.listen(3000, () => {
