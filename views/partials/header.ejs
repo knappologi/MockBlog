@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog</title>
-    <link rel="icon" type="image/png" href="favicon-monstera.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.6/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.6/dist/semantic.min.js"></script>
@@ -15,15 +14,18 @@
 <body>
 
 <div class="ui secondary pointing menu fixed" id="menu">
-  <a class="item start active" href="/">
+  <a class="item start <%= currentView == 'standard' ? 'active' : '' %>" href="/">
     Start
   </a>
-  <a class="item new-post" href="/blogs/new">
+  <a class="item new-post <%= currentView.includes('new') ? 'active' : '' %>" href="/posts/new">
     New post
   </a>
   <div class="right menu">
-    <a class="ui item">
-      ...
+    <a class="item login <%= currentView.includes('login') ? 'active' : '' %>" href="/login">
+      Login
+    </a>
+    <a class="item register <%= currentView.includes('register') ? 'active' : '' %>" href="/register">
+      Register
     </a>
   </div>
 </div>

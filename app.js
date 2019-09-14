@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_CONNECTIONSTRING, { useNewUrlParser: true, useFindAndModify: false });
 const methodOverride = require('method-override');
+const url = require('url');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -13,85 +14,90 @@ app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended:true})); 
 app.use(methodOverride('_method'));
 
-const Blog = require('./associations/models/blog');
 const Post = require('./associations/models/post');
 const Comment = require('./associations/models/comment');
 const User = require('./associations/models/user');
 
+// Info to all views
+app.use((req, res, next) => {
+    res.locals.currentView = (req.url.includes('new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
+    next();
+});
+
 app.get('/', (req, res) => {
-    res.redirect('/blogs');
+    res.redirect('/posts');
 })
 
-app.get('/blogs', (req, res) => {
-    Blog.find({}, (error, blogs) => {
+app.get('/posts', (req, res) => {
+    Post.find({}, (error, posts) => {
         if(error) {
             console.log('ERROR. Could not load content: ' + error);
         } else {
-            res.render('index.ejs', {blogs: blogs});
+            res.render('index.ejs', {posts: posts});
         }
     })
 })
 
 // Form for new post
-app.get('/blogs/new', (req, res) => {
+app.get('/posts/new', (req, res) => {
     res.render('newPost.ejs');
 })
 
 
 // Post new blog post
-app.post('/blogs', (req, res) => {
-    req.body.blog.body = req.sanitize(req.body.blog.body);
-    Blog.create(req.body.blog, (error, newBlog) => {
+app.post('/posts', (req, res) => {
+    req.body.post.body = req.sanitize(req.body.post.body);
+    Post.create(req.body.post, (error, newPost) => {
         if(error) {
             console.log('ERROR. Could not create post: ' + error);
         } else {
-            res.redirect('/blogs/'+newBlog.id);
+            res.redirect('/posts/'+newPost.id);
         }
     })
 })
 
 // Show specific blog post
-app.get('/blogs/:id', (req, res) => {
-    Blog.findById(req.params.id, (error, blogPost) => {
+app.get('/posts/:id', (req, res) => {
+    Post.findById(req.params.id, (error, post) => {
         if(error) {
             // Fix blog not found
-            res.redirect('/blogs');
+            res.redirect('/posts');
         } else {
-            res.render('show', {blog: blogPost});
+            res.render('show', {post: post});
         }
     })
 })
 
 // Edit post
-app.get('/blogs/:id/edit', (req, res) => {
-    Blog.findById(req.params.id, (error, blogPost) => {
+app.get('/posts/:id/edit', (req, res) => {
+    Post.findById(req.params.id, (error, post) => {
         if(error) {
             // Fix blog not found
-            res.redirect('/blogs');
+            res.redirect('/posts');
         } else {
-            res.render('edit', {blog: blogPost});
+            res.render('edit', {post: post});
         }
     })
 })
 
 // Update post
-app.put('/blogs/:id', (req, res) => {
-    req.body.blog.body = req.sanitize(req.body.blog.body);  // Sanitize to remove scripts from body :)
-    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (error, blogPost) => {
+app.put('/posts/:id', (req, res) => {
+    req.body.post.body = req.sanitize(req.body.post.body);  // Sanitize to remove scripts from body :)
+    Post.findByIdAndUpdate(req.params.id, req.body.post, (error, post) => {
         if (error) {
-            res.redirect('/blogs/'+req.params.id);  // TODO: kontrollera!
+            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
             console.log('ERROR: ' + error);
         } else {
-            res.redirect('/blogs/'+req.params.id);
+            res.redirect('/posts/'+req.params.id);
         }
     })
 })
 
 // Delete post
-app.delete('/blogs/:id', (req, res) => {
-    Blog.findByIdAndRemove(req.params.id, (error, blog) => {
+app.delete('/posts/:id', (req, res) => {
+    Post.findByIdAndRemove(req.params.id, (error, post) => {
         if (error) {
-            res.redirect('/blogs/'+req.params.id);  // TODO: kontrollera!
+            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
             console.log('ERROR: ' + error);
         } else {
             res.redirect('/');
@@ -110,3 +116,7 @@ app.get('*', (req, res) => {
 app.listen(3000, () => {
     console.log('Blog is up!');
 })
+
+
+
+

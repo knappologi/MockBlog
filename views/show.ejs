@@ -1,17 +1,17 @@
 <% include ./partials/header %>
 <div class="ui grid container centered" id="show-post">
   <div class="eight wide centered row">
-    <div class="ui huge header show-post"> <%= blog.title %> </div>
+    <div class="ui huge header show-post"> <%= post.title %> </div>
   </div>
   <div class="eight wide centered row">
-    <img class="ui centered bordered image" id="blog-image-place" src="<%= blog.image%>">
+    <img class="ui centered bordered image" id="post-image-place" src="<%= post.image%>">
   </div>
   <div class="four wide centered row">
-    <span><%= blog.createDate.toDateString() %></span>
+    <span><%= post.createDate.toDateString() %></span>
   </div>
 
   <div class="fourteen wide column">
-    <p><%- blog.body %></p>
+    <p><%- post.body %></p>
   </div>
 
   <div class="sixteen wide centered row">
@@ -24,8 +24,8 @@
   <div class="sixteen wide centered row">
             <div class="edit-delete-post">
                 <button class="ui tiny secondary basic button" onclick="location.href='/'">Back</button>
-                <a href="/blogs/<%=blog.id%>/edit" class="ui tiny secondary basic button">Edit</a>
-                <form action="/blogs/<%=blog.id%>?_method=DELETE"  method="POST" id="deleteForm">
+                <a href="/posts/<%=post.id%>/edit" class="ui tiny secondary basic button">Edit</a>
+                <form action="/posts/<%=post.id%>?_method=DELETE"  method="POST" id="deleteForm">
                     <button class="ui tiny secondary basic button">Delete</button>    
                 </form>
                 
@@ -35,8 +35,8 @@
 
 <script>
     // If there is no blog image
-    if(<%- JSON.stringify(blog.image)%>.length < 1) {
-       const imagePlace = document.getElementById("blog-image-place");
+    if(<%- JSON.stringify(post.image)%>.length < 1) {
+       const imagePlace = document.getElementById("post-image-place");
        imagePlace.parentNode.removeChild(imagePlace);
     }
 </script>
