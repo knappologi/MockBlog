@@ -1,0 +1,10 @@
+        <div class="ui relaxed divided list comments-list">
+          <% post.comments.forEach((comment) => { %> 
+            <div class="item">
+                <div class="content">
+                    <div class="description"><%=comment.text%></div>
+                    <div class=""><strong>// <%=comment.author.username%>,</strong> <%=comment.createDate.toDateString()%></div>
+                </div>
+              </div>
+          <% }) %>
+          </div>

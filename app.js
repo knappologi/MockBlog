@@ -20,17 +20,17 @@ const User = require('./associations/models/user');
 
 const   indexRoutes     = require('./routes/index');  
         postsRoutes    = require('./routes/posts');
-        // commentsRoutes  = require('./routes/comments');
+        commentsRoutes  = require('./routes/comments');
         
 
 // Info to all views
 app.use((req, res, next) => {
-    res.locals.currentView = (req.url.includes('new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
+    res.locals.currentView = (req.url.includes('posts/new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
     next();
 });
 
 app.use(indexRoutes);
-// app.use(commentsRoutes);    // can also be shortened: /place/:id/comments
+app.use(commentsRoutes);    // can also be shortened: /place/:id/comments
 app.use(postsRoutes);
 
 /*

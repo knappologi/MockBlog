@@ -14,8 +14,30 @@
     <p><%- post.body %></p>
   </div>
 
-  <div class="sixteen wide centered row">
+  <div class="fourteen wide centered column">
 
+    <!-- original sketch-->
+    <h3>Comments</h3>
+      <div class="ui relaxed divided list comments-list">
+          <div class="item">
+            <div class="content">
+                <div class="description">If you want to be able to reference</div>
+                <div class=""><strong>// Authorname,</strong> Updated 22 mins ago</div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="content">
+                  <div class="description">If you want to be able to reference. que convallis a cras semper. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Amet mauris commodo quis imperdiet massa tincidun</div>
+                  <div class=""><strong>// Authorname,</strong> Updated 22 mins ago</div>
+              </div>
+            </div>
+        </div>
+
+        <p>
+            <a href="/posts/<%=post._id%>/comments/new" class="ui small secondary basic button">Add a comment</a>
+        </p>
+
+        
   </div>
 
 </div>
