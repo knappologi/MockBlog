@@ -3,20 +3,20 @@
     <div class="ui main text container segment new-post">
         <div class="ui huge header"> New post
         </div>
-        <form action="/blogs" method="POST" class="ui form">
+        <form action="/posts" method="POST" class="ui form">
             <div class="field">
                 <label>Title</label>
-                <input type="text" name="blog[title]" placeholder="Title" required>
+                <input type="text" name="post[title]" placeholder="Title" required>
             </div>
 
             <div class="field">
                 <label>Image URL</label>
-                <input type="text" name="blog[image]" placeholder="Image url">
+                <input type="text" name="post[image]" placeholder="Image url">
             </div>
 
             <div class="field">
-                <label>Blog content</label>
-                <Textarea name="blog[body]" required></Textarea>
+                <label>Content</label>
+                <Textarea name="post[body]" required></Textarea>
             </div>
             <button class="ui secondary basic button" onclick="location.href='/'">Back</button>
             <button type="submit" class="ui secondary basic button post-button">Post</button>

@@ -11,17 +11,17 @@
         <div class="ui top attached segment">
                 <div class="ui divided items">
 
-                        <% blogs.forEach((blog) => { %>
+                        <% posts.forEach((post) => { %>
                                 <div class="item">
                                         <div class="image">
-                                                <img src="<%= blog.image%>">
+                                                <img src="<%= post.image%>">
                                         </div>
                                         <div class="content">
-                                                <a class="header" href="/blogs/<%= blog.id%>"><%= blog.title %></a>
-                                                <div class="meta"> <span><%= blog.createDate.toDateString() %></span></div>
-                                                <div class="description"><%- blog.body.substring(0, 99) %>...</div>
+                                                <a class="header" href="/posts/<%= post.id%>"><%= post.title %></a>
+                                                <div class="meta"> <span><%= post.createDate.toDateString() %></span></div>
+                                                <div class="description"><%- post.body.substring(0, 99) %>...</div>
                                                 <div class="extra"> 
-                                                        <a class="ui secondary basic button" href="/blogs/<%= blog.id%>">Read more <i class="right chevron icon"></i></a>
+                                                        <a class="ui secondary basic button" href="/posts/<%= post.id%>">Read more <i class="right chevron icon"></i></a>
                                                 </div>
                                         </div>
                                 </div>
@@ -41,25 +41,25 @@
         <div class="ui top attached">
                 <div class="ui divided items">
 
-                        <% blogs.reverse().forEach((blog) => { %>
+                        <% posts.reverse().forEach((post) => { %>
                                 <div class="ui card inverted">
                                         <div class="image">
-                                        <img src="<%= blog.image%>">
+                                        <img src="<%= post.image%>">
                                         </div>
                                         <div class="content index-view-content">
-                                                <a class="header" href="/blogs/<%= blog.id%>"><%= blog.title %></a>
+                                                <a class="header" href="/posts/<%= post.id%>"><%= post.title %></a>
                                                 <div class="meta">
-                                                        <span><%= blog.createDate.toDateString() %></span>
+                                                        <span><%= post.createDate.toDateString() %></span>
                                                 </div>
                                                         <div class="description">
-                                                                <%- blog.body.substring(0, 150) %>
-                                                                <% if (blog.body.length > 150) { %>
+                                                                <%- post.body.substring(0, 150) %>
+                                                                <% if (post.body.length > 150) { %>
                                                                         ...
                                                                <% } %>
                                                         </div>
                                         </div>
                                         <div class="extra content">
-                                                <a class="inverted" href="/blogs/<%= blog.id%>">Read <i class="right chevron icon"></i></a>               
+                                                <a class="inverted" href="/posts/<%= post.id%>">Read <i class="right chevron icon"></i></a>               
                                         </div>
                                 </div>
 
