@@ -20,7 +20,7 @@ const User = require('./associations/models/user');
 
 // Info to all views
 app.use((req, res, next) => {
-    res.locals.currentView = req.url;
+    res.locals.currentView = req.url; // KOLLA OM NEW/LOGIN/REGISTER FINNS
     next();
 });
 

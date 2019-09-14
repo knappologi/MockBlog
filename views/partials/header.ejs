@@ -13,22 +13,18 @@
 </head>
 <body>
 
-    <% if(currentView.includes('new')) { %>
-      THIS IS New
-      <% } %>
-
 <div class="ui secondary pointing menu fixed" id="menu">
   <a class="item start active" href="/">
     Start
   </a>
-  <a class="item new-post" href="/posts/new">
+  <a class="item new-post <%= currentView.includes('new') ? 'active' : '' %>" href="/posts/new">
     New post
   </a>
   <div class="right menu">
-    <a class="item login" href="/login">
+    <a class="item login <%= currentView.includes('login') ? 'active' : '' %>" href="/login">
       Login
     </a>
-    <a class="item register" href="/register">
+    <a class="item register <%= currentView.includes('register') ? 'active' : '' %>" href="/register">
       Register
     </a>
   </div>
