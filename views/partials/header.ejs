@@ -14,7 +14,7 @@
 <body>
 
 <div class="ui secondary pointing menu fixed" id="menu">
-  <a class="item start active" href="/">
+  <a class="item start <%= currentView == 'standard' ? 'active' : '' %>" href="/">
     Start
   </a>
   <a class="item new-post <%= currentView.includes('new') ? 'active' : '' %>" href="/posts/new">

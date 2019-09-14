@@ -20,7 +20,7 @@ const User = require('./associations/models/user');
 
 // Info to all views
 app.use((req, res, next) => {
-    res.locals.currentView = req.url; // KOLLA OM NEW/LOGIN/REGISTER FINNS
+    res.locals.currentView = (req.url.includes('new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
     next();
 });
 
@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/posts', (req, res) => {
-   // setActiveTab(req);
     Post.find({}, (error, posts) => {
         if(error) {
             console.log('ERROR. Could not load content: ' + error);
@@ -41,7 +40,6 @@ app.get('/posts', (req, res) => {
 
 // Form for new post
 app.get('/posts/new', (req, res) => {
-  //  setActiveTab(req);
     res.render('newPost.ejs');
 })
 
@@ -119,15 +117,6 @@ app.listen(3000, () => {
     console.log('Blog is up!');
 })
 
-/*
-function setActiveTab(req) {
-    if(req.url.includes('new')) {
-        console.log('yes!');
-        document.getElementById('new-tab').classList.add('active');
-    }
-    console.log(req.url);
-}
-*/
 
 
 
