@@ -26,6 +26,7 @@ const   indexRoutes     = require('./routes/index');
 // Info to all views
 app.use((req, res, next) => {
     res.locals.currentView = (req.url.includes('posts/new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
+    res.locals.currentUser = req.user;
     next();
 });
 
