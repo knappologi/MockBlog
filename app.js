@@ -8,19 +8,36 @@ mongoose.connect(process.env.MONGODB_CONNECTIONSTRING, { useNewUrlParser: true, 
 const methodOverride = require('method-override');
 const url = require('url');
 
+const   Post = require('./associations/models/post');
+        Comment = require('./associations/models/comment');
+        User = require('./associations/models/user');
+
+const   indexRoutes     = require('./routes/index');  
+        postsRoutes    = require('./routes/posts');
+        commentsRoutes  = require('./routes/comments');
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended:true})); 
 app.use(methodOverride('_method'));
 
-const Post = require('./associations/models/post');
-const Comment = require('./associations/models/comment');
-const User = require('./associations/models/user');
+// Passport: For session and coding/decoding
+const   passport = require('passport');
+        LocalStrategy = require('passport-local');
+        passportLocalMongoose = require('passport-local-mongoose');
+app.use(require('express-session')({
+    secret: process.env.PASSPORT_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));   //Based on passport-local-mongoose
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-const   indexRoutes     = require('./routes/index');  
-        postsRoutes    = require('./routes/posts');
-        commentsRoutes  = require('./routes/comments');
+
         
 
 // Info to all views
