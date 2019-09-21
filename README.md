@@ -10,4 +10,5 @@ Functionality:
 * delete blog post,
 * post a comment, 
 * register user,
-* log in. 
+* log in,
+* log out.
