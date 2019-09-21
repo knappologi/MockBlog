@@ -1,19 +1,22 @@
 <% include ./partials/header %>
 
     <div class="ui main text container segment new-post">
-        <div class="ui huge header"> New comment
-        </div>
-        <!--
-        <form action="/posts/postidFIXADETTA/comments" method="POST" class="ui form">
+        <div class="ui huge header"> Add a new comment to <%= post.title %> </div>
+        
+        <form action="/posts/<%=post._id%>/comments" method="POST" class="ui form">
             <div class="field">
-                <label>Content</label>
+                    <label>Name</label>
+                    <input type="text" name="comment[author.username]" value="<%if(typeof currentUser !== 'undefined'){%>
+                        <%= currentUser.username%>
+                    <%}%>" required>
+            </div>
+            <div class="field">
+                <label>Text</label>
                 <Textarea name="comment[text]" required></Textarea>
             </div>
             <button class="ui secondary basic button" onclick="location.href='/'">Back</button>
             <button type="submit" class="ui secondary basic button post-button">Post</button>
         </form>
-        -->
-        
     </div>
     
 <% include ./partials/footer %>

@@ -5,37 +5,6 @@
                 <div class="ui huge header"> A mock blog </div>
         </div>
 </div>
-<!-- ORG -->
-<!-- 
-<div class="ui main text container">
-        <div class="ui top attached segment">
-                <div class="ui divided items">
-
-                        <% posts.forEach((post) => { %>
-                                <div class="item">
-                                        <div class="image">
-                                                <img src="<%= post.image%>">
-                                        </div>
-                                        <div class="content">
-                                                <a class="header" href="/posts/<%= post.id%>"><%= post.title %></a>
-                                                <div class="meta"> <span><%= post.createDate.toDateString() %></span></div>
-                                                <div class="description"><%- post.body.substring(0, 99) %>...</div>
-                                                <div class="extra"> 
-                                                        <a class="ui secondary basic button" href="/posts/<%= post.id%>">Read more <i class="right chevron icon"></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-
-                        <% })%>
-                </div>
-        </div>
-
-</div>
--->
-<!-- ORG END -->
-
-
-
 
 <div class="ui main text container index-view">
         <div class="ui top attached">
@@ -51,12 +20,15 @@
                                                 <div class="meta">
                                                         <span><%= post.createDate.toDateString() %></span>
                                                 </div>
-                                                        <div class="description">
-                                                                <%- post.body.substring(0, 150) %>
-                                                                <% if (post.body.length > 150) { %>
-                                                                        ...
-                                                               <% } %>
-                                                        </div>
+                                                    <div class="description">
+                                                                    <% if (post.body != null){ %>
+                                                                        <p><%- post.body.substring(0,150)%>
+                                                                        <% if (post.body.length > 150) { %>
+                                                                        ... 
+                                                                        <% } %> </p>
+                                                                    <% } %>
+
+                                                    </div>
                                         </div>
                                         <div class="extra content">
                                                 <a class="inverted" href="/posts/<%= post.id%>">Read <i class="right chevron icon"></i></a>               

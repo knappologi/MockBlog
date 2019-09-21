@@ -10,7 +10,7 @@ router.get('/posts', (req, res) => {
         if(error) {
             console.log('ERROR. Could not load content: ' + error);
         } else {
-            res.render('index.ejs', {posts: posts});
+            res.render('index', {posts: posts});
         }
     })
 })

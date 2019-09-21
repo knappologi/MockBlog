@@ -7,7 +7,13 @@ const   User = require('../associations/models/user');
 
 // Form for new post
 router.get('/posts/:id/comments/new', (req, res) => {
-    res.render('newComment.ejs');
+    Post.findById(req.params.id, (error, post) => {
+        if (error) {
+            console.log("ERROR: " + error)
+        } else {
+          res.render('newComment.ejs', {post: post});
+        }
+      })
 })
 
 

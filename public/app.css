@@ -60,6 +60,10 @@ h3 {
 
 /* INDEX */
 
+a.inverted {
+    text-decoration: none;
+}
+
 .ui.huge.header {
     margin: 5%;
     text-align: center;

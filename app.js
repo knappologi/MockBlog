@@ -42,7 +42,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Info to all views
 app.use((req, res, next) => {
-    res.locals.currentView = (req.url.includes('posts/new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
+    res.locals.currentView = (req.url.includes('comments/') || req.url.includes('posts/new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
     res.locals.currentUser = req.user;
     next();
 });
