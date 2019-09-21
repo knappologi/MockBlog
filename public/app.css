@@ -17,6 +17,12 @@ a {
     margin-bottom: 4%;
 }
 
+h3 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
 /* ALL */
 @media only screen and (min-width: 1200px) {
     .ui.container { 
@@ -46,6 +52,15 @@ a {
     border: 1px solid white; 
 }
 
+.ui.basic.secondary.button, .ui.basic.secondary.buttons {
+    font-weight: 400 !important; 
+    width: auto !important;
+}
+
+.ui.form .field > label {
+    font-weight: 500;
+}
+
 @-moz-document url-prefix() {
     html {
     scrollbar-color: #535353 #FFF;
@@ -53,6 +68,10 @@ a {
 }
 
 /* INDEX */
+
+a.inverted {
+    text-decoration: none;
+}
 
 .ui.huge.header {
     margin: 5%;
@@ -192,10 +211,26 @@ a:hover {
     padding: 5px 0 13px 0;
 }
 
+#post-content {
+    padding-bottom: 4em;
+}
+
 @media only screen and (min-width: 1200px) {
 .ui.grid.container {
     width: 55% !important;
 }
+}
+
+/* SHOW: COMMENTS */
+#comments-list {
+    padding-bottom: 3em;
+}
+.comments {
+    font-size: small;
+}
+
+h3.comments {
+    font-size: medium;
 }
 
 /* NOT FOUND */

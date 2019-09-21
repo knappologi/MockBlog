@@ -17,15 +17,29 @@
   <a class="item start <%= currentView == 'standard' ? 'active' : '' %>" href="/">
     Start
   </a>
-  <a class="item new-post <%= currentView.includes('new') ? 'active' : '' %>" href="/posts/new">
+  <a class="item new-post <%= currentView.includes('/posts/new') ? 'active' : '' %>" href="/posts/new">
     New post
   </a>
+  <% if (currentView.includes('comments/new')) { %>
+    <a class="item new-comment active" href="">
+        New comment
+    </a>
+  <%} %>
+
+
   <div class="right menu">
-    <a class="item login <%= currentView.includes('login') ? 'active' : '' %>" href="/login">
-      Login
-    </a>
-    <a class="item register <%= currentView.includes('register') ? 'active' : '' %>" href="/register">
-      Register
-    </a>
+      <% if(!currentUser) { %>
+        <a class="item login <%= currentView.includes('login') ? 'active' : '' %>" href="/login">
+            Login
+          </a>
+          <a class="item register <%= currentView.includes('register') ? 'active' : '' %>" href="/register">
+            Register
+          </a>
+       <% } else { %>
+        <a class="item"> Hello <%=currentUser.username%>! </a>
+        <a class="item logout <%= currentView.includes('logout') ? 'active' : '' %>" href="/logout">
+            Log out
+          </a>
+       <% } %>
   </div>
 </div>
