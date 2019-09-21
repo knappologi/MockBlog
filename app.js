@@ -8,9 +8,7 @@ mongoose.connect(process.env.MONGODB_CONNECTIONSTRING, { useNewUrlParser: true, 
 const methodOverride = require('method-override');
 const url = require('url');
 
-const   Post = require('./associations/models/post');
-        Comment = require('./associations/models/comment');
-        User = require('./associations/models/user');
+const   User = require('./associations/models/user');
 
 const   indexRoutes     = require('./routes/index');  
         postsRoutes    = require('./routes/posts');
@@ -38,8 +36,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-        
-
 // Info to all views
 app.use((req, res, next) => {
     res.locals.currentView = (req.url.includes('comments/') || req.url.includes('posts/new') || req.url.includes('login') || req.url.includes('register')) ? req.url : 'standard';
@@ -50,94 +46,6 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(commentsRoutes);    // can also be shortened: /place/:id/comments
 app.use(postsRoutes);
-
-/*
-app.get('/', (req, res) => {
-    res.redirect('/posts');
-})
-
-
-app.get('/posts', (req, res) => {
-    Post.find({}, (error, posts) => {
-        if(error) {
-            console.log('ERROR. Could not load content: ' + error);
-        } else {
-            res.render('index.ejs', {posts: posts});
-        }
-    })
-})
-
-
-// Form for new post
-app.get('/posts/new', (req, res) => {
-    res.render('newPost.ejs');
-})
-
-
-// Post new blog post
-app.post('/posts', (req, res) => {
-    req.body.post.body = req.sanitize(req.body.post.body);
-    Post.create(req.body.post, (error, newPost) => {
-        if(error) {
-            console.log('ERROR. Could not create post: ' + error);
-        } else {
-            res.redirect('/posts/'+newPost.id);
-        }
-    })
-})
-
-// Show specific blog post
-app.get('/posts/:id', (req, res) => {
-    Post.findById(req.params.id, (error, post) => {
-        if(error) {
-            // Fix blog not found
-            res.redirect('/posts');
-        } else {
-            res.render('show', {post: post});
-        }
-    })
-})
-
-
-
-// Edit post
-app.get('/posts/:id/edit', (req, res) => {
-    Post.findById(req.params.id, (error, post) => {
-        if(error) {
-            // Fix blog not found
-            res.redirect('/posts');
-        } else {
-            res.render('edit', {post: post});
-        }
-    })
-})
-
-// Update post
-app.put('/posts/:id', (req, res) => {
-    req.body.post.body = req.sanitize(req.body.post.body);  // Sanitize to remove scripts from body :)
-    Post.findByIdAndUpdate(req.params.id, req.body.post, (error, post) => {
-        if (error) {
-            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
-            console.log('ERROR: ' + error);
-        } else {
-            res.redirect('/posts/'+req.params.id);
-        }
-    })
-})
-
-// Delete post
-app.delete('/posts/:id', (req, res) => {
-    Post.findByIdAndRemove(req.params.id, (error, post) => {
-        if (error) {
-            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
-            console.log('ERROR: ' + error);
-        } else {
-            res.redirect('/');
-        }
-    })
-})
-
-*/
 
 
 app.use((req, res) =>{

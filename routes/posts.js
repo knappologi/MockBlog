@@ -1,9 +1,7 @@
 const express = require('express');
 const expressSanitizer = require('express-sanitizer');
 const router = express.Router();
-const   passport = require('passport');
-const   User = require('../associations/models/user');
-        Post = require('../associations/models/post');
+const        Post = require('../associations/models/post');
 
 router.get('/posts', (req, res) => {
     Post.find({}, (error, posts) => {
@@ -32,29 +30,6 @@ router.post('/posts', (req, res) => {
         }
     })
 })
-
-// Post new blog post #2 
-/*
-router.post('/posts', (req, res) => {
-    req.body.post.body = req.sanitize(req.body.post.body);
-    Post.create({
-        title: req.body.post.title,
-        image: req.body.post.image,
-        body: req.body.post.body,
-        author: {
-            id: req.user._id,
-            username: req.user.username
-        }
-    }, (error, newPost) => {
-        if(error) {
-            console.log('ERROR. Could not create post: ' + error);
-        } else {
-            res.redirect('/posts/'+newPost.id);
-        }
-    })
-})
-*/
-
 
 // Show specific blog post
 router.get('/posts/:id', (req, res) => {
@@ -86,7 +61,7 @@ router.put('/posts/:id', (req, res) => {
     req.body.post.body = req.sanitize(req.body.post.body);  // Sanitize to remove scripts from body :)
     Post.findByIdAndUpdate(req.params.id, req.body.post, (error, post) => {
         if (error) {
-            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
+            res.redirect('/posts/'+req.params.id);  
             console.log('ERROR: ' + error);
         } else {
             res.redirect('/posts/'+req.params.id);
@@ -98,7 +73,7 @@ router.put('/posts/:id', (req, res) => {
 router.delete('/posts/:id', (req, res) => {
     Post.findByIdAndRemove(req.params.id, (error, post) => {
         if (error) {
-            res.redirect('/posts/'+req.params.id);  // TODO: kontrollera!
+            res.redirect('/posts/'+req.params.id);  
             console.log('ERROR: ' + error);
         } else {
             res.redirect('/');

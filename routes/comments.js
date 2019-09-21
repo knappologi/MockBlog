@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const   passport = require('passport');
-const   User = require('../associations/models/user');
         Comment = require('../associations/models/comment');
         Post = require('../associations/models/post');
 
@@ -28,7 +26,6 @@ router.post('/posts/:id/comments', (req, res) => {
                 if(error) {
                     console.log('ERROR. Could not create comment: ' + error);
                 } else {
-                    // newComment.author.id = req.user._id;
                     newComment.author = req.body.comment.author.trim();
                     newComment.text = req.sanitize(req.body.comment.text);
                     newComment.save();
@@ -40,8 +37,5 @@ router.post('/posts/:id/comments', (req, res) => {
         }
     })
 })
-
-
-
 
 module.exports = router;
