@@ -52,6 +52,15 @@ h3 {
     border: 1px solid white; 
 }
 
+.ui.basic.secondary.button, .ui.basic.secondary.buttons {
+    font-weight: 400 !important; 
+    width: auto !important;
+}
+
+.ui.form .field > label {
+    font-weight: 500;
+}
+
 @-moz-document url-prefix() {
     html {
     scrollbar-color: #535353 #FFF;
@@ -218,6 +227,10 @@ a:hover {
 }
 .comments {
     font-size: small;
+}
+
+h3.comments {
+    font-size: medium;
 }
 
 /* NOT FOUND */
