@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const   passport = require('passport');
 const   User = require('../associations/models/user');
-        Comment = require('../associations/models/post');
+        Comment = require('../associations/models/comment');
         Post = require('../associations/models/post');
 
 // Form for new post
@@ -24,17 +24,17 @@ router.post('/posts/:id/comments', (req, res) => {
             console.log("ERROR finding post: " + error)
             res.redirect('/');
         } else {
-            req.body.comment.text = req.sanitize(req.body.comment.text);
-            Comment.create(req.body.comment, (error, newPost) => {
+            Comment.create(req.body.comment, (error, newComment) => {
                 if(error) {
-                    console.log('ERROR. Could not save comment: ' + error);
+                    console.log('ERROR. Could not create comment: ' + error);
                 } else {
-                    comment.author.id = req.user._id;
-                    comment.author.username = req.user.username;
-                    comment.save();
-                    post.comments.push(comment);
+                    // newComment.author.id = req.user._id;
+                    newComment.author = req.body.comment.author.trim();
+                    newComment.text = req.sanitize(req.body.comment.text);
+                    newComment.save();
+                    post.comments.push(newComment);
                     post.save();
-                    res.redirect('/posts/'+newPost.id);
+                    res.redirect('/posts/'+post._id);
                 }
             })
         }
