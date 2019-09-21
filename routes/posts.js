@@ -35,10 +35,9 @@ router.post('/posts', (req, res) => {
 router.get('/posts/:id', (req, res) => {
     Post.findById(req.params.id).populate('comments').exec((error, post) => {
         if(error) {
-            // Fix blog not found
+            // TODO: blog not found
             res.redirect('/posts');
         } else {
-            console.log(post);
             res.render('show', {post: post});
         }
     })
@@ -48,7 +47,7 @@ router.get('/posts/:id', (req, res) => {
 router.get('/posts/:id/edit', (req, res) => {
     Post.findById(req.params.id, (error, post) => {
         if(error) {
-            // Fix blog not found
+            // TODO: blog not found
             res.redirect('/posts');
         } else {
             res.render('edit', {post: post});
